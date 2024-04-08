@@ -7,7 +7,7 @@ use Illuminate\View\View;
 
 class PageController extends Controller
 {
-    //
+
     public function legals(): View
     {
         $items = array(
@@ -21,6 +21,7 @@ class PageController extends Controller
             'items' => $items,
         ]);
     }
+
     public function aboutus(): View
     {
         return view('aboutus', [
