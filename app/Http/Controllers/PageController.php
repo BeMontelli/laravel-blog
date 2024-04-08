@@ -17,7 +17,7 @@ class PageController extends Controller
 
         return view('legals', [
             'title' => 'Legals',
-            'content' => 'Lorem Ipsum',
+            'content' => '<h1>Legals</h1><p>Lorem Ipsum 2 ...</p>',
             'items' => $items,
         ]);
     }
@@ -26,7 +26,7 @@ class PageController extends Controller
     {
         return view('aboutus', [
             'title' => 'About Us',
-            'content' => '<p>Lorem Ipsum ...</p><p>Lorem Ipsum 2 ...</p>',
+            'content' => '<h1>About Us</h1><p>Lorem Ipsum 2 ...</p>',
         ]);
     }
 
@@ -34,7 +34,7 @@ class PageController extends Controller
     {
         return view('welcome', [
             'title' => 'Welcome',
-            'content' => '<p>Lorem Ipsum ...</p><p>Lorem Ipsum 2 ...</p>',
+            'content' => '<h1>Welcome</h1><p>Lorem Ipsum 2 ...</p>',
         ]);
     }
 }
