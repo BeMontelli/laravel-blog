@@ -10,9 +10,15 @@ class PageController extends Controller
     //
     public function legals(): View
     {
+        $items = array(
+            "test",
+            "test 2",
+        );
+
         return view('legals', [
             'title' => 'Legals',
             'content' => 'Lorem Ipsum',
+            'items' => $items,
         ]);
     }
     public function aboutus(): View

@@ -19,5 +19,15 @@
 
     {!! $content !!}
 
+    <ul>
+    @if(count($items) > 0)
+        @foreach($items as $item)
+            <li>{{ $item }}</li>
+        @endforeach
+    @else
+        <li>No Items</li>
+    @endif
+    </ul>
+
     </body>
 </html>
