@@ -4,10 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [PageController::class, 'welcome'])->name('page.welcome');
 Route::get('/legals', [PageController::class, 'legals'])->name('page.legals');
 Route::get('/about-us', [PageController::class, 'aboutus'])->name('page.aboutus');
 

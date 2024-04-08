@@ -29,4 +29,12 @@ class PageController extends Controller
             'content' => '<p>Lorem Ipsum ...</p><p>Lorem Ipsum 2 ...</p>',
         ]);
     }
+
+    public function welcome(): View
+    {
+        return view('welcome', [
+            'title' => 'Welcome',
+            'content' => '<p>Lorem Ipsum ...</p><p>Lorem Ipsum 2 ...</p>',
+        ]);
+    }
 }
