@@ -10,8 +10,8 @@ Route::get('/legals', [PageController::class, 'legals'])->name('page.legals');
 Route::get('/about-us', [PageController::class, 'aboutus'])->name('page.aboutus');
 
 Route::group(['prefix' => '/dashboard'],function () {
-    Route::get('/', [PageAdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
-    Route::get('/my-posts', [PageAdminController::class, 'myposts'])->middleware(['auth'])->name('myposts');
+    Route::get('/', [PageAdminController::class, 'dashboard'])->middleware(['auth'])->name('admin.dashboard');
+    Route::get('/my-posts', [PageAdminController::class, 'myposts'])->middleware(['auth'])->name('admin.myposts');
 });
 
 Route::middleware('auth')->group(function () {
