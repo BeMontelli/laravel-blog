@@ -14,8 +14,12 @@ Route::group(['prefix' => '/dashboard'],function () {
     Route::get('/', [PageAdminController::class, 'dashboard'])->middleware(['auth'])->name('admin.dashboard');
     Route::get('/my-posts', [PageAdminController::class, 'myposts'])->middleware(['auth'])->name('admin.myposts');
 
-    Route::get('/create-post', [AdminPostController::class, 'create'])->middleware(['auth'])->name('admin.posts.create');
-    Route::post('/create-post', [AdminPostController::class, 'store'])->middleware(['auth'])->name('admin.posts.store');
+    Route::get('/post', [AdminPostController::class, 'create'])->middleware(['auth'])->name('admin.posts.create');
+    Route::post('/post', [AdminPostController::class, 'store'])->middleware(['auth'])->name('admin.posts.store');
+
+    Route::get('/post/{id}/edit', [AdminPostController::class, 'edit'])->middleware(['auth'])->name('admin.posts.edit');
+    Route::put('/post/{id}/edit', [AdminPostController::class, 'update'])->middleware(['auth'])->name('admin.posts.update');
+    Route::delete('/post/{id}/edit', [AdminPostController::class, 'destroy'])->middleware(['auth'])->name('admin.posts.destroy');
 
 });
 

@@ -18,6 +18,12 @@
                                     <div class="post p-4">
                                         <h2 class="text-white">{{ $post->title }}</h2>
                                         <p>{{ $post->description }}</p>
+                                        <a href="{{ route('admin.posts.edit', $post->id) }}" class="underline">Edit</a>
+                                        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button type="submit" class="underline">Delete</button>
+                                        </form>
                                     </div>
                                 </li>
                             @endforeach
