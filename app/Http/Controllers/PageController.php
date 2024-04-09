@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -32,9 +33,13 @@ class PageController extends Controller
 
     public function welcome(): View
     {
+//        $posts = Post::all();
+        $posts = Post::latest()->take(6)->get();
+
         return view('welcome', [
             'title' => 'Welcome',
             'content' => '<h1>Welcome</h1><p>Lorem Ipsum 2 ...</p>',
+            'posts' => $posts,
         ]);
     }
 }
