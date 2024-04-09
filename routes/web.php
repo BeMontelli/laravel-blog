@@ -8,9 +8,14 @@ Route::get('/', [PageController::class, 'welcome'])->name('page.welcome');
 Route::get('/legals', [PageController::class, 'legals'])->name('page.legals');
 Route::get('/about-us', [PageController::class, 'aboutus'])->name('page.aboutus');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['prefix' => '/dashboard'],function () {
+    Route::get('/', function () {
+        return view('dashboard');
+    })->middleware(['auth'])->name('dashboard');
+    Route::get('/my-posts', function () {
+        return view('dashboard');
+    })->middleware(['auth'])->name('myposts');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
