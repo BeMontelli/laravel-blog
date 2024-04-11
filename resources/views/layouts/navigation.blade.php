@@ -15,9 +15,6 @@
                     <x-nav-link :href="route('page.welcome')">
                         {{ __('Site') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('admin.dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('admin.myposts')" :active="request()->routeIs('admin.myposts')">
                         {{ __('My Posts') }}
                     </x-nav-link>
@@ -78,11 +75,6 @@
         <div class=" space-y-1">
             <x-responsive-nav-link :href="route('page.welcome')">
                 {{ __('Site') }}
-            </x-responsive-nav-link>
-        </div>
-        <div class=" space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('admin.dashboard')">
-                {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
         <div class=" space-y-1">
