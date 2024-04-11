@@ -10,6 +10,9 @@
                     <li class="">
                         <div class="post p-4">
                             <h2 class="text-white">{{ $post->title }}</h2>
+                            @if(!empty($post->user->name))
+                                <span class="block">{{ $post->user->name }}</span>
+                            @endif
                             <p>{{ $post->description }}</p>
                         </div>
                     </li>

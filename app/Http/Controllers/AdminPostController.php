@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostController extends Controller
 {
@@ -21,7 +22,15 @@ class AdminPostController extends Controller
             'description' => 'required',
             'content' => 'required',
         ]);
-        Post::create($request->all());
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->content = $request->content;
+        $post->user_id = Auth::id();
+
+        $post->save();
+
         return redirect()->route('admin.myposts')
             ->with('success', 'Post created successfully.');
     }
