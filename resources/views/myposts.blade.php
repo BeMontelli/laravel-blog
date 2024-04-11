@@ -16,7 +16,7 @@
                             @foreach($posts as $post)
                                 <li class="">
                                     <div class="post p-4">
-                                        <h2 class="text-white">{{ $post->title }}</h2>
+                                        <h2 class="text-white bold"><a class="bold" href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a></h2>
                                         <p>{{ $post->description }}</p>
                                         <a href="{{ route('admin.posts.edit', $post->id) }}" class="underline">Edit</a>
                                         <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
