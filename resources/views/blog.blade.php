@@ -9,7 +9,7 @@
                 @foreach($posts as $post)
                     <li class="">
                         <div class="post p-4">
-                            <h2 class="text-white"><a href="{{ route('page.blog.single',$post) }}">{{ $post->title }}</a></h2>
+                            <h2 class="text-white"><a href="{{ route('page.blog.single',$post->id) }}">{{ $post->title }}</a></h2>
                             @if(!empty($post->user->name))
                                 <span class="block">{{ $post->user->name }}</span>
                             @endif
@@ -21,8 +21,6 @@
                 <li>No Posts</li>
             @endif
         </ul>
-
-        <a href="{{ route('page.blog') }}" class="underline">Tous les posts</a>
     </div>
 </div>
 

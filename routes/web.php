@@ -4,11 +4,15 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PageAdminController;
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'welcome'])->name('page.welcome');
 Route::get('/legals', [PageController::class, 'legals'])->name('page.legals');
 Route::get('/about-us', [PageController::class, 'aboutus'])->name('page.aboutus');
+
+Route::get('/blog', [PostController::class, 'index'])->name('page.blog');
+Route::get('/blog/post/{id}', [PostController::class, 'show'])->name('page.blog.single');
 
 Route::group(['prefix' => '/dashboard'],function () {
     Route::get('/', [PageAdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
