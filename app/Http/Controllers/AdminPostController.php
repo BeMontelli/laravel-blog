@@ -23,13 +23,15 @@ class AdminPostController extends Controller
             'content' => 'required',
         ]);
 
-        $post = new Post();
+        $request->request->add(['user_id' => Auth::id()]);
+        Post::create($request->all());
+        // or
+        /*$post = new Post();
         $post->title = $request->title;
         $post->description = $request->description;
         $post->content = $request->content;
         $post->user_id = Auth::id();
-
-        $post->save();
+        $post->save();*/
 
         return redirect()->route('admin.myposts')
             ->with('success', 'Post created successfully.');
