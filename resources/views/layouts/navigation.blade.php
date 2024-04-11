@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('admin.myposts')" :active="request()->routeIs('admin.myposts')">
                         {{ __('My Posts') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                        {{ __('Categories') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -82,9 +85,14 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
-        <div class="pb-3 space-y-1">
+        <div class=" space-y-1">
             <x-responsive-nav-link :href="route('admin.myposts')" :active="request()->routeIs('admin.myposts')">
                 {{ __('My Posts') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                {{ __('Categories') }}
             </x-responsive-nav-link>
         </div>
 
