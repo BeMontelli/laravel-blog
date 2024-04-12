@@ -11,6 +11,16 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <ul class="grid-cols-3">
 
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form action="{{ route('admin.posts.store') }}" method="post">
                             @csrf
                             @method("POST")
@@ -20,7 +30,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="body">description</label>
-                                <textarea class="text-black form-control" id="description" name="description" rows="3" required></textarea>
+                                <textarea class="text-black form-control" id="description" name="description" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="body">content</label>
