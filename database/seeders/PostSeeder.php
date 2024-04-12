@@ -17,15 +17,16 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory(20)->create();
-
         DB::table('posts')->insert([
-            'title' => Str::random(10),
+            'title' => "First Post",
             'description' => 'description',
             'content' => 'content',
             'user_id' => User::all()->random()->id,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
+
+        Post::factory(20)->create();
+
     }
 }

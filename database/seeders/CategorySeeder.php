@@ -16,13 +16,14 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::factory(20)->create();
-
         DB::table('categories')->insert([
             'title' => 'Default Category',
             'description' => 'description',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
+
+        Category::factory(20)->create();
+
     }
 }
