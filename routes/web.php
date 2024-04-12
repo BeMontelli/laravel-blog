@@ -16,7 +16,10 @@ Route::get('/blog', [PostController::class, 'index'])->name('page.blog');
 Route::get('/blog/post/{id}', [PostController::class, 'show'])->name('page.blog.single');
 
 Route::group(['prefix' => '/dashboard'],function () {
+    //DASHBOARD
     Route::get('/', [PageAdminController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+
+    // POSTS BO
     Route::get('/my-posts', [PageAdminController::class, 'myposts'])->middleware(['auth'])->name('admin.myposts');
 
     Route::get('/post/{id}', [AdminPostController::class, 'show'])->middleware(['auth'])->name('admin.posts.show');
@@ -28,6 +31,7 @@ Route::group(['prefix' => '/dashboard'],function () {
     Route::put('/post/{id}/edit', [AdminPostController::class, 'update'])->middleware(['auth'])->name('admin.posts.update');
     Route::delete('/post/{id}/edit', [AdminPostController::class, 'destroy'])->middleware(['auth'])->name('admin.posts.destroy');
 
+    // CATEGORIES BO
     Route::get('/categories', [AdminCategoryController::class, 'index'])->middleware(['auth'])->name('admin.categories.index');
 
     Route::get('/category/{id}', [AdminCategoryController::class, 'show'])->middleware(['auth'])->name('admin.categories.show');
@@ -38,7 +42,6 @@ Route::group(['prefix' => '/dashboard'],function () {
     Route::get('/category/{id}/edit', [AdminCategoryController::class, 'edit'])->middleware(['auth'])->name('admin.categories.edit');
     Route::put('/category/{id}/edit', [AdminCategoryController::class, 'update'])->middleware(['auth'])->name('admin.categories.update');
     Route::delete('/category/{id}/edit', [AdminCategoryController::class, 'destroy'])->middleware(['auth'])->name('admin.categories.destroy');
-
 });
 
 Route::middleware('auth')->group(function () {
