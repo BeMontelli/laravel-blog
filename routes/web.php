@@ -14,6 +14,7 @@ Route::get('/legals', [PageController::class, 'legals'])->name('page.legals');
 Route::get('/about-us', [PageController::class, 'aboutus'])->name('page.aboutus');
 
 Route::get('/blog', [PostController::class, 'index'])->name('page.blog');
+// ⚠️ missing route blog category
 Route::get('/blog/post/{id}', [PostController::class, 'show'])->name('page.blog.single');
 
 Route::group(['prefix' => '/dashboard'],function () {
