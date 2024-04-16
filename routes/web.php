@@ -32,26 +32,29 @@ Route::group(['prefix' => '/dashboard'],function () {
     Route::put('/post/{id}/edit', [AdminPostController::class, 'update'])->middleware(['auth'])->name('admin.posts.update');
     Route::delete('/post/{id}/edit', [AdminPostController::class, 'destroy'])->middleware(['auth'])->name('admin.posts.destroy');
 
-    // CATEGORIES BO
-    Route::get('/categories', [AdminCategoryController::class, 'index'])->middleware(['auth'])->name('admin.categories.index');
+    Route::group([ 'middleware' => ['can:accessAdmin,App\Policies\Role']], function () {
 
-    Route::get('/category/{id}', [AdminCategoryController::class, 'show'])->middleware(['auth'])->name('admin.categories.show');
+        // CATEGORIES BO
+        Route::get('/categories', [AdminCategoryController::class, 'index'])->middleware(['auth'])->name('admin.categories.index');
 
-    Route::get('/category-create', [AdminCategoryController::class, 'create'])->middleware(['auth'])->name('admin.categories.create');
-    Route::post('/category-create', [AdminCategoryController::class, 'store'])->middleware(['auth'])->name('admin.categories.store');
+        Route::get('/category/{id}', [AdminCategoryController::class, 'show'])->middleware(['auth'])->name('admin.categories.show');
 
-    Route::get('/category/{id}/edit', [AdminCategoryController::class, 'edit'])->middleware(['auth'])->name('admin.categories.edit');
-    Route::put('/category/{id}/edit', [AdminCategoryController::class, 'update'])->middleware(['auth'])->name('admin.categories.update');
-    Route::delete('/category/{id}/edit', [AdminCategoryController::class, 'destroy'])->middleware(['auth'])->name('admin.categories.destroy');
+        Route::get('/category-create', [AdminCategoryController::class, 'create'])->middleware(['auth'])->name('admin.categories.create');
+        Route::post('/category-create', [AdminCategoryController::class, 'store'])->middleware(['auth'])->name('admin.categories.store');
 
-    // USERS BO
-    Route::get('/users', [AdminUserController::class, 'index'])->middleware(['auth'])->name('admin.users.index');
+        Route::get('/category/{id}/edit', [AdminCategoryController::class, 'edit'])->middleware(['auth'])->name('admin.categories.edit');
+        Route::put('/category/{id}/edit', [AdminCategoryController::class, 'update'])->middleware(['auth'])->name('admin.categories.update');
+        Route::delete('/category/{id}/edit', [AdminCategoryController::class, 'destroy'])->middleware(['auth'])->name('admin.categories.destroy');
 
-    Route::get('/user/{id}', [AdminUserController::class, 'show'])->middleware(['auth'])->name('admin.users.show');
+        // USERS BO
+        Route::get('/users', [AdminUserController::class, 'index'])->middleware(['auth'])->name('admin.users.index');
 
-    Route::get('/user/{id}/edit', [AdminUserController::class, 'edit'])->middleware(['auth'])->name('admin.users.edit');
-    Route::put('/user/{id}/edit', [AdminUserController::class, 'update'])->middleware(['auth'])->name('admin.users.update');
-    Route::delete('/user/{id}/edit', [AdminUserController::class, 'destroy'])->middleware(['auth'])->name('admin.users.destroy');
+        Route::get('/user/{id}', [AdminUserController::class, 'show'])->middleware(['auth'])->name('admin.users.show');
+
+        Route::get('/user/{id}/edit', [AdminUserController::class, 'edit'])->middleware(['auth'])->name('admin.users.edit');
+        Route::put('/user/{id}/edit', [AdminUserController::class, 'update'])->middleware(['auth'])->name('admin.users.update');
+        Route::delete('/user/{id}/edit', [AdminUserController::class, 'destroy'])->middleware(['auth'])->name('admin.users.destroy');
+    });
 });
 
 Route::middleware('auth')->group(function () {
