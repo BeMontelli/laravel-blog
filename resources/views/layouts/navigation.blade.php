@@ -18,9 +18,14 @@
                     <x-nav-link :href="route('admin.myposts')" :active="request()->routeIs('admin.myposts')">
                         {{ __('My Posts') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
-                        {{ __('Categories') }}
-                    </x-nav-link>
+                    @if(Auth::user()->isAdmin())
+                        <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                            {{ __('Categories') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -82,11 +87,18 @@
                 {{ __('My Posts') }}
             </x-responsive-nav-link>
         </div>
+        @if(Auth::user()->isAdmin())
         <div class="pb-3 space-y-1">
             <x-responsive-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
                 {{ __('Categories') }}
             </x-responsive-nav-link>
         </div>
+        <div class="pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                {{ __('User') }}
+            </x-responsive-nav-link>
+        </div>
+        @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
