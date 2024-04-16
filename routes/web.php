@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PageAdminController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,15 @@ Route::group(['prefix' => '/dashboard'],function () {
     Route::get('/category/{id}/edit', [AdminCategoryController::class, 'edit'])->middleware(['auth'])->name('admin.categories.edit');
     Route::put('/category/{id}/edit', [AdminCategoryController::class, 'update'])->middleware(['auth'])->name('admin.categories.update');
     Route::delete('/category/{id}/edit', [AdminCategoryController::class, 'destroy'])->middleware(['auth'])->name('admin.categories.destroy');
+
+    // USERS BO
+    Route::get('/users', [AdminUserController::class, 'index'])->middleware(['auth'])->name('admin.users.index');
+
+    Route::get('/user/{id}', [AdminUserController::class, 'show'])->middleware(['auth'])->name('admin.users.show');
+
+    Route::get('/user/{id}/edit', [AdminUserController::class, 'edit'])->middleware(['auth'])->name('admin.users.edit');
+    Route::put('/user/{id}/edit', [AdminUserController::class, 'update'])->middleware(['auth'])->name('admin.users.update');
+    Route::delete('/user/{id}/edit', [AdminUserController::class, 'destroy'])->middleware(['auth'])->name('admin.users.destroy');
 });
 
 Route::middleware('auth')->group(function () {
