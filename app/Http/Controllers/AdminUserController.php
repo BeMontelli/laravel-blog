@@ -37,6 +37,7 @@ class AdminUserController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
+            'role' => 'nullable|in:admin',
         ]);
         $user = User::find($id);
         $user->update($request->all());

@@ -16,6 +16,13 @@
                             <label for="title">Name</label>
                             <input value="{{ $user->name }}" type="text" class="text-black form-control" id="name" name="name" required>
                         </div>
+                        <div class="form-group">
+                            <label for="title">Role</label>
+                            <select name="role" id="role" class="text-black">
+                                <option value="admin" @if($user->isAdmin()) selected="selected" @endif>Admin</option>
+                                <option value="" @if(!$user->isAdmin()) selected="selected" @endif>Normal</option>
+                            </select>
+                        </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Update User</button>
                     </form>
