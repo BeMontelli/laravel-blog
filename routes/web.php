@@ -33,7 +33,7 @@ Route::group(['prefix' => '/dashboard'],function () {
     Route::put('/post/{id}/edit', [AdminPostController::class, 'update'])->middleware(['auth'])->name('admin.posts.update');
     Route::delete('/post/{id}/edit', [AdminPostController::class, 'destroy'])->middleware(['auth'])->name('admin.posts.destroy');
 
-    Route::group([ 'middleware' => ['can:accessAdmin,App\Policies\Role']], function () {
+    Route::group([ 'middleware' => ['isAdmin'] ], function () {
 
         // CATEGORIES BO
         Route::get('/categories', [AdminCategoryController::class, 'index'])->middleware(['auth'])->name('admin.categories.index');
