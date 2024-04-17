@@ -19,9 +19,21 @@
                         <div class="post p-4">
                             <h2 class="text-white"><a href="{{ route('page.blog.single',$post->id) }}">{{ $post->title }}</a></h2>
                             @if(!empty($post->user->name))
-                                <span class="block">{{ $post->user->name }}</span>
+                                <span class="block">by {{ $post->user->name }}</span>
                             @endif
-                            <p>{{ $post->description }}</p>
+
+                            @if (!empty($post->categories) && count($post->categories) > 0)
+                                <div class="categories">
+                                    <span>cats :</span>
+                                    @foreach ($post->categories as $k => $category)
+                                        <span> @if($k!=0)/@endif {{ $category->title }}</span>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            <div class="description" style="margin: 10px 0 0 0">
+                                <p>{{ $post->description }}</p>
+                            </div>
                         </div>
                     </li>
                 @endforeach
