@@ -8,7 +8,7 @@
         <ul class="categories">
             @if(!empty($categories) && count($categories) > 0)
                 @foreach($categories as $category)
-                    <a href="{{ route('page.blog.category',$category->id) }}" class="inline-flex bg-white text-black rounded-full px-10">{{$category->title}}</a>
+                    <a href="{{ route('page.blog.category',$category->id) }}" class="inline-flex bg-white text-black px-10">{{$category->title}}</a>
                 @endforeach
             @endif
         </ul>
