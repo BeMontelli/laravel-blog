@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +12,10 @@ class AdminPostController extends Controller
 
     public function create()
     {
+        $categories = Category::all();
         return view('postcreate', [
-            'title' => "All Posts"
+            'title' => "All Posts",
+            'categories' => $categories
         ]);
     }
     public function store(Request $request)
@@ -24,7 +27,9 @@ class AdminPostController extends Controller
         ]);
 
         $request->request->add(['user_id' => Auth::id()]);
-        Post::create($request->all());
+        $post = Post::create($request->all());
+
+        $post->categories()->attach($request->categories);
         // or
         /*$post = new Post();
         $post->title = $request->title;
@@ -45,10 +50,14 @@ class AdminPostController extends Controller
 
     public function edit($id)
     {
+        $categories = Category::all();
         $post = Post::find($id);
+        $idCategories = array_column($post->categories->all(), 'id');
         return view('postedit', [
             "title" => "Edit Post",
-            "post" => $post
+            "post" => $post,
+            'categories' => $categories,
+            'idCategories' => $idCategories,
         ]);
     }
     public function update(Request $request, $id)
@@ -60,6 +69,9 @@ class AdminPostController extends Controller
         ]);
         $post = Post::find($id);
         $post->update($request->all());
+
+        $post->categories()->sync($request->categories);
+
         return redirect()->route('admin.myposts')
             ->with('success', 'Post updated successfully.');
     }

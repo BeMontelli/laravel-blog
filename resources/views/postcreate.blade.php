@@ -35,6 +35,18 @@
                             <textarea class="text-black form-control" id="content" name="content" rows="3" required></textarea>
                         </div>
                         <br>
+                        <fieldset class="mb-6 text-white">
+                        <legend>Categories</legend>
+                        @if (!empty($categories) && count($categories) > 0)
+                            @foreach ($categories as $category)
+                                <div>
+                                    <input type="checkbox" id="cat-{{ $category->id }}" name="categories[]" value="{{ $category->id }}" />
+                                    <label for="cat-{{ $category->id }}">{{ $category->title }}</label>
+                                </div>
+                                @endforeach
+                                @endif
+                        </fieldset>
+                        <br>
                         <button type="submit" class="btn btn-primary">Create Post</button>
                     </form>
                 </div>
