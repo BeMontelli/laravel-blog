@@ -14,8 +14,8 @@ Route::get('/legals', [PageController::class, 'legals'])->name('page.legals');
 Route::get('/about-us', [PageController::class, 'aboutus'])->name('page.aboutus');
 
 Route::get('/blog', [PostController::class, 'index'])->name('page.blog');
-Route::get('/blog/category/{id}', [PostController::class, 'category'])->name('page.blog.category');
-Route::get('/blog/post/{id}', [PostController::class, 'show'])->name('page.blog.single');
+Route::get('/blog/category/{category}', [PostController::class, 'category'])->name('page.blog.category');
+Route::get('/blog/post/{post}', [PostController::class, 'show'])->name('page.blog.single');
 
 Route::group(['prefix' => '/dashboard'],function () {
     //DASHBOARD

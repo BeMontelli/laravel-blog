@@ -23,9 +23,8 @@ class PostController extends Controller
         ]);
     }
 
-    public function category($id) : View
+    public function category(Category $category) : View
     {
-        $category = Category::find($id);
         $categories = Category::all();
         $posts = $category->posts;
         return view('blogcategory', [
@@ -37,9 +36,8 @@ class PostController extends Controller
         ]);
     }
 
-    public function show($id) : View
+    public function show(Post $post) : View
     {
-        $post = Post::find($id);
         return view('postsingle', [
             'title' => $post->title,
             'post' => $post,
