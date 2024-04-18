@@ -16,6 +16,9 @@
                             @foreach($categories as $category)
                                 <li class="">
                                     <div class="categorie p-4">
+
+                                        <div class="banner" style="height: 50px; width: 50px;border-radius: 100%;background-position: center;background-size:cover;background-image: url('{{ URL::to('/')}}/{{$category->image }}')"></div>
+
                                         <h2 class="text-lg mb-2 text-white font-bold"><a class="hover:underline" href="{{ route('admin.categories.show', $category->id) }}">{{ $category->title }}</a></h2>
                                         <p class="block mb-2">{{ $category->description }}</p>
                                         <a href="{{ route('admin.categories.edit', $category->id) }}" class="underline">Edit</a>
