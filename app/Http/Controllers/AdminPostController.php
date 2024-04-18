@@ -75,8 +75,19 @@ class AdminPostController extends Controller
             'title' => 'required|max:255',
             'description' => 'required',
             'content' => 'required',
+            'imageinput' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $post = Post::find($id);
+
+        $folders = 'images/'.date("Y/m/d");
+        $extension = $request->imageinput->extension();
+        $imageName = time().'-'.Str::slug(basename($request->imageinput->getClientOriginalName(), ".".$extension), '-').'.'.$extension;
+        $request->imageinput->move(public_path($folders), $imageName);
+        $request->request->add(['image' => $folders.'/'.$imageName]);
+
+        dump($request);
+        dump($request);
+
         $post->update($request->all());
 
         $post->categories()->sync($request->categories);

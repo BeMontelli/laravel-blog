@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="{{ route('admin.posts.update', $post->id) }}" method="post">
+                    <form action="{{ route('admin.posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method("PUT")
                         <div class="form-group">
@@ -23,6 +23,15 @@
                         <div class="form-group">
                             <label for="body">content</label>
                             <textarea class="text-black form-control" id="content" name="content" rows="3" required>{{ $post->content }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="imageinput">Image:</label>
+                            <input
+                                type="file"
+                                name="imageinput"
+                                id="imageinput"
+                                class="form-control @error('image') is-invalid @enderror">
+                                <img style="max-width: 400px" src="{{ URL::to('/')}}/{{$post->image }}" alt="{{ $post->title }}">
                         </div>
                         <br>
                         <fieldset class="mb-6 text-white">
