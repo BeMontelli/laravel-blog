@@ -17,9 +17,9 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         $images = [
-            'placeholders/pic-1.png',
-            'placeholders/pic-2.jpg',
-            'placeholders/pic-3.png',
+            'images/placeholders/pic-1.png',
+            'images/placeholders/pic-2.jpg',
+            'images/placeholders/pic-3.png',
         ];
 
         return [

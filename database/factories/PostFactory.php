@@ -18,8 +18,8 @@ class PostFactory extends Factory
     public function definition(): array
     {
         $images = [
-            'placeholders/banner.png',
-            'placeholders/banner-alt.png',
+            'images/placeholders/banner.png',
+            'images/placeholders/banner-alt.png',
         ];
 
         return [
