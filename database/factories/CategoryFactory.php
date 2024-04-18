@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
@@ -21,9 +22,11 @@ class CategoryFactory extends Factory
             'images/placeholders/pic-2.jpg',
             'images/placeholders/pic-3.png',
         ];
+        $title = fake()->word(rand(2, 3),true);
 
         return [
-            'title' => fake()->word(rand(2, 3),true),
+            'title' => $title,
+            'slug' => Str::slug($title, "-"),
             'description' => fake()->sentence(4),
             'image' => $images[rand(0,2)],
             'created_at' => date("Y-m-d H:i:s"),

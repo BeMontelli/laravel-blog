@@ -18,6 +18,7 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             'title' => 'Default Category',
+            'slug' => "default-category",
             'description' => 'description',
             'image' => 'images/placeholders/pic-3.png',
             'created_at' => date("Y-m-d H:i:s"),

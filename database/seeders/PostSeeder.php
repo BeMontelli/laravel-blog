@@ -19,6 +19,7 @@ class PostSeeder extends Seeder
     {
         DB::table('posts')->insert([
             'title' => "First Post",
+            'slug' => "first-post",
             'description' => 'description',
             'content' => 'content',
             'image' => 'images/placeholders/banner.png',

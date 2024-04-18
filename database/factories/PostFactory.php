@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
@@ -21,9 +23,11 @@ class PostFactory extends Factory
             'images/placeholders/banner.png',
             'images/placeholders/banner-alt.png',
         ];
+        $title = fake()->sentence();
 
         return [
-            'title' => fake()->sentence(),
+            'title' => $title,
+            'slug' => Str::slug($title, "-"),
             'description' => fake()->sentence(4),
             'content' => fake()->text(),
             'image' => $images[rand(0,1)],
