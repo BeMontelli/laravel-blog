@@ -16,9 +16,16 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $images = [
+            'placeholders/pic-1.png',
+            'placeholders/pic-2.jpg',
+            'placeholders/pic-3.png',
+        ];
+
         return [
             'title' => fake()->word(rand(2, 3),true),
             'description' => fake()->sentence(4),
+            'image' => $images[rand(0,2)],
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ];

@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="{{ route('admin.categories.store') }}" method="post">
+                    <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method("POST")
                         <div class="form-group">
@@ -19,6 +19,14 @@
                         <div class="form-group">
                             <label for="body">description</label>
                             <textarea class="text-black form-control" id="description" name="description" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="imageinput">Image:</label>
+                            <input
+                                type="file"
+                                name="imageinput"
+                                id="imageinput"
+                                class="form-control @error('image') is-invalid @enderror">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Create Category</button>

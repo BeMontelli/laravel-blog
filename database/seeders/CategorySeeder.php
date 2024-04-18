@@ -19,11 +19,12 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             'title' => 'Default Category',
             'description' => 'description',
+            'image' => 'placeholders/pic-3.png',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")
         ]);
 
-        Category::factory(20)->create();
+        Category::factory(10)->create();
 
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AdminCategoryController extends Controller
 {
@@ -29,7 +30,14 @@ class AdminCategoryController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
+            'imageinput' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        $folders = 'images/'.date("Y/m/d");
+        $extension = $request->imageinput->extension();
+        $imageName = time().'-'.Str::slug(basename($request->imageinput->getClientOriginalName(), ".".$extension), '-').'.'.$extension;
+        $request->imageinput->move(public_path($folders), $imageName);
+        $request->request->add(['image' => $folders.'/'.$imageName]);
 
         Category::create($request->all());
 
@@ -50,9 +58,18 @@ class AdminCategoryController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
+            'imageinput' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $category = Category::find($id);
+
+        $folders = 'images/'.date("Y/m/d");
+        $extension = $request->imageinput->extension();
+        $imageName = time().'-'.Str::slug(basename($request->imageinput->getClientOriginalName(), ".".$extension), '-').'.'.$extension;
+        $request->imageinput->move(public_path($folders), $imageName);
+        $request->request->add(['image' => $folders.'/'.$imageName]);
+
         $category->update($request->all());
+
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category updated successfully.');
     }
