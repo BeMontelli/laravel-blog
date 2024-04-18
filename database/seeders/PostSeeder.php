@@ -21,6 +21,7 @@ class PostSeeder extends Seeder
             'title' => "First Post",
             'description' => 'description',
             'content' => 'content',
+            'image' => 'placeholders/banner.png',
             'user_id' => User::all()->random()->id,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")

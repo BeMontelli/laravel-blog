@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->text('content');
+            $table->string('image')->nullable();
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')

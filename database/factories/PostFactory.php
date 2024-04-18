@@ -17,10 +17,16 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        $images = [
+            'placeholders/banner.png',
+            'placeholders/banner-alt.png',
+        ];
+
         return [
             'title' => fake()->sentence(),
             'description' => fake()->sentence(4),
             'content' => fake()->text(),
+            'image' => $images[rand(0,1)],
             'user_id' => User::all()->random()->id,
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s")

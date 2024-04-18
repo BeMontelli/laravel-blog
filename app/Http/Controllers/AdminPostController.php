@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class AdminPostController extends Controller
 {
@@ -24,9 +25,17 @@ class AdminPostController extends Controller
             'title' => 'required|max:255',
             'description' => 'required',
             'content' => 'required',
+            'imageinput' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        $folders = 'images/'.date("Y/m/d");
+        $extension = $request->imageinput->extension();
+        $imageName = time().'-'.Str::slug(basename($request->imageinput->getClientOriginalName(), ".".$extension), '-').'.'.$extension;
+        $request->imageinput->move(public_path($folders), $imageName);
+        $request->request->add(['image' => $folders.'/'.$imageName]);
+
         $request->request->add(['user_id' => Auth::id()]);
+
         $post = Post::create($request->all());
 
         $post->categories()->attach($request->categories);

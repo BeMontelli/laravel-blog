@@ -19,7 +19,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('admin.posts.store') }}" method="post">
+                    <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method("POST")
                         <div class="form-group">
@@ -33,6 +33,14 @@
                         <div class="form-group">
                             <label for="body">content</label>
                             <textarea class="text-black form-control" id="content" name="content" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="imageinput">Image:</label>
+                            <input
+                                type="file"
+                                name="imageinput"
+                                id="imageinput"
+                                class="form-control @error('image') is-invalid @enderror">
                         </div>
                         <br>
                         <fieldset class="mb-6 text-white">
