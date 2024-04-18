@@ -16,7 +16,9 @@
                             @foreach($posts as $post)
                                 <li class="">
                                     <div class="post p-4">
-                                        <h2 class="text-lg mb-2 text-white font-bold"><a class="hover:underline" href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a></h2>
+                                        <div class="banner" style="width: 100%; height: 180px;border-radius: 10px;background-position: center;background-size:cover;background-image: url('{{ URL::to('/')}}/{{$post->image }}')"></div>
+
+                                        <h2 class="text-lg mt-2 mb-2 text-white font-bold"><a class="hover:underline" href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a></h2>
                                         <p class="block mb-2">{{ $post->description }}</p>
                                         <a href="{{ route('admin.posts.edit', $post->id) }}" class="underline">Edit</a>
                                         <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">

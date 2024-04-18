@@ -9,7 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <span class="id block mb-4">ID: {{ $post->id }}</span>
+
+                    <div class="banner" style="width: 100%; height: 350px;border-radius: 10px;background-position: center;background-size:cover;background-image: url('{{ URL::to('/')}}/{{$post->image }}')"></div>
+
+                    <span class="id block mt-4 mb-4">ID: {{ $post->id }}</span>
                     <p class="desc mb-4">{{ $post->description }}</p>
                     <p class="content block mb-4">{{ $post->content }}</p>
 

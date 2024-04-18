@@ -18,7 +18,9 @@
                 @foreach($posts as $post)
                     <li class="">
                         <div class="post p-4">
-                            <h2 class="text-white"><a href="{{ route('page.blog.single',$post->id) }}">{{ $post->title }}</a></h2>
+                            <div class="banner" style="width: 100%; height: 180px;border-radius: 10px;background-position: center;background-size:cover;background-image: url('{{ URL::to('/')}}/{{$post->image }}')"></div>
+
+                            <h2 class="text-white block" style="margin-top: 10px"><a href="{{ route('page.blog.single',$post->id) }}">{{ $post->title }}</a></h2>
                             @if(!empty($post->user->name))
                                 <span class="block">by {{ $post->user->name }}</span>
                             @endif
