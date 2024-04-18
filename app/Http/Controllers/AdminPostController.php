@@ -13,7 +13,7 @@ class AdminPostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('postcreate', [
+        return view('admin.postcreate', [
             'title' => "All Posts",
             'categories' => $categories
         ]);
@@ -45,7 +45,7 @@ class AdminPostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('postshow', compact('post'));
+        return view('admin.postshow', compact('post'));
     }
 
     public function edit($id)
@@ -53,7 +53,7 @@ class AdminPostController extends Controller
         $categories = Category::all();
         $post = Post::find($id);
         $idCategories = array_column($post->categories->all(), 'id');
-        return view('postedit', [
+        return view('admin.postedit', [
             "title" => "Edit Post",
             "post" => $post,
             'categories' => $categories,
