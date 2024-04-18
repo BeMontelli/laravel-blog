@@ -85,9 +85,6 @@ class AdminPostController extends Controller
         $request->imageinput->move(public_path($folders), $imageName);
         $request->request->add(['image' => $folders.'/'.$imageName]);
 
-        dump($request);
-        dump($request);
-
         $post->update($request->all());
 
         $post->categories()->sync($request->categories);
