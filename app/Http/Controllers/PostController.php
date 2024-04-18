@@ -29,6 +29,7 @@ class PostController extends Controller
         $categories = Category::all();
         $posts = $category->posts;
         return view('blogcategory', [
+            'image' => $category->image,
             'title' => $category->title,
             'content' => $category->description,
             'categories' => $categories,
