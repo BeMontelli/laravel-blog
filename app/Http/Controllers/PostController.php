@@ -13,6 +13,7 @@ class PostController extends Controller
     public function index(): View
     {
         $posts = Post::paginate(12);
+        abort_unless($posts->count() > 0 || $posts->currentPage() === 1, 404);
         $categories = Category::all();
 
         return view('blog', [
@@ -27,6 +28,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $posts = $category->posts()->paginate(12);
+        abort_unless($posts->count() > 0 || $posts->currentPage() === 1, 404);
 
         return view('blogcategory', [
             'image' => $category->image,

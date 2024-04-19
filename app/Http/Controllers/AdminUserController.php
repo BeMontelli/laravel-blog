@@ -11,6 +11,7 @@ class AdminUserController extends Controller
     public function index()
     {
         $users = User::paginate(12);
+        abort_unless($users->count() > 0 || $users->currentPage() === 1, 404);
 
         return view('admin.users', [
             'title' => 'All users',

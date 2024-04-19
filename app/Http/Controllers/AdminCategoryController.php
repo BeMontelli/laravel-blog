@@ -11,6 +11,7 @@ class AdminCategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(12);
+        abort_unless($categories->count() > 0 || $categories->currentPage() === 1, 404);
 
         return view('admin.categories', [
             'title' => 'All categories',
