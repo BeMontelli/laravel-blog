@@ -22,19 +22,26 @@
                     <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method("POST")
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="text-black form-control" id="title" name="title" required>
+                        <div class="">
+                            <label class="block font-medium text-sm text-gray-700 dark:text-gray-300" for="title">
+                                Title
+                            </label>
+                            <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full" id="title" name="title" type="text" value="" required="required" autofocus="autofocus" autocomplete="title">
                         </div>
-                        <div class="form-group">
-                            <label for="body">description</label>
-                            <textarea class="text-black form-control" id="description" name="description" rows="3"></textarea>
+                        <div class="mt-6">
+                            <label class="block font-medium text-sm text-gray-700 dark:text-gray-300" for="description">
+                                Description
+                            </label>
+                            <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full" id="description" name="description" type="text" value="" required="required" autofocus="autofocus" autocomplete="description">
                         </div>
-                        <div class="form-group">
-                            <label for="body">content</label>
-                            <textarea class="text-black form-control" id="content" name="content" rows="3" required></textarea>
+                        <div class="mt-6">
+                            <label class="block font-medium text-sm text-gray-700 dark:text-gray-300" for="content">
+                                Content
+                            </label>
+                            <textarea class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full" id="content" name="content" required="required" autofocus="autofocus"></textarea>
                         </div>
-                        <div class="form-group">
+
+                        <div class="form-group mt-6">
                             <label class="form-label" for="imageinput">Image:</label>
                             <input
                                 type="file"
@@ -42,20 +49,22 @@
                                 id="imageinput"
                                 class="form-control @error('image') is-invalid @enderror">
                         </div>
-                        <br>
-                        <fieldset class="mb-6 text-white">
-                        <legend>Categories</legend>
+
+                        <fieldset class="mt-6 text-white">
+                        <legend class="mb-2 block font-medium text-sm text-gray-700 dark:text-gray-300">Categories</legend>
                         @if (!empty($categories) && count($categories) > 0)
+                            <div class="checkboxes flex inline-flex">
                             @foreach ($categories as $category)
-                                <div>
+                                <div class="p-2" style="width: fit-content;">
                                     <input type="checkbox" id="cat-{{ $category->id }}" name="categories[]" value="{{ $category->id }}" />
                                     <label for="cat-{{ $category->id }}">{{ $category->title }}</label>
                                 </div>
-                                @endforeach
-                                @endif
+                            @endforeach
+                            </div>
+                        @endif
                         </fieldset>
                         <br>
-                        <button type="submit" class="btn btn-primary">Create Post</button>
+                        <button type="submit" class="btn btn-primary btn__classic">Create Post</button>
                     </form>
                 </div>
             </div>
