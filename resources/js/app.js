@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function(){
             const input = imagearea.querySelector('input');
             if(input && indic && img) {
                 input.addEventListener('change', (e) => {
-                    const [file] = input.files;
+                    const file = input.files[0];
                     if (file) {
                         img.src = URL.createObjectURL(file)
                         indic.textContent = file.name;
