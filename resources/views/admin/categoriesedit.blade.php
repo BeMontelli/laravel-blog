@@ -27,15 +27,19 @@
                             <textarea class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full" id="description" name="description" required="required" autofocus="autofocus">{{ $category->description }}</textarea>
                         </div>
 
-                        <div class="mt-6 form-group">
-                            <label class="form-label" for="imageinput">Image:</label>
-                            <input
-                                type="file"
-                                name="imageinput"
-                                id="imageinput"
-                                class="form-control @error('image') is-invalid @enderror">
-                            <img style="max-width: 400px" src="{{ URL::to('/')}}/{{$category->image }}" alt="{{ $category->title }}">
+                        <div class="mt-6">
+                            <label class="block font-medium text-sm text-gray-700 dark:text-gray-300" for="imageinput">Image</label>
+                            <div class="image-area mt-2 border-gray-300 dark:border-gray-700">
+                                <img src="{{ URL::to('/')}}/{{$category->image }}" alt="{{$category->image }}">
+                                <div class="indic"><span>{{$category->image }}</span></div>
+                                <input
+                                    type="file"
+                                    name="imageinput"
+                                    id="imageinput"
+                                    class="form-control @error('image') is-invalid @enderror">
+                            </div>
                         </div>
+
                         <button type="submit" class="mt-6 btn__classic btn btn-primary">Update Category</button>
                     </form>
                 </div>

@@ -41,19 +41,23 @@
                             <textarea class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full" id="content" name="content" required="required" autofocus="autofocus"></textarea>
                         </div>
 
-                        <div class="form-group mt-6">
-                            <label class="form-label" for="imageinput">Image:</label>
-                            <input
-                                type="file"
-                                name="imageinput"
-                                id="imageinput"
-                                class="form-control @error('image') is-invalid @enderror">
+                        <div class="mt-6">
+                            <label class="block font-medium text-sm text-gray-700 dark:text-gray-300" for="imageinput">Image</label>
+                            <div class="image-area mt-2 border-gray-300 dark:border-gray-700">
+                                <img src="" alt="">
+                                <div class="indic"><span>Here load image</span></div>
+                                <input
+                                    type="file"
+                                    name="imageinput"
+                                    id="imageinput"
+                                    class="form-control @error('image') is-invalid @enderror">
+                            </div>
                         </div>
 
                         <fieldset class="mt-6 text-white">
                         <legend class="mb-2 block font-medium text-sm text-gray-700 dark:text-gray-300">Categories</legend>
                         @if (!empty($categories) && count($categories) > 0)
-                            <div class="checkboxes flex inline-flex">
+                            <div class="checkboxes flex inline-flex" style="flex-wrap: wrap">
                             @foreach ($categories as $category)
                                 <div class="p-2" style="width: fit-content;">
                                     <input type="checkbox" id="cat-{{ $category->id }}" name="categories[]" value="{{ $category->id }}" />
