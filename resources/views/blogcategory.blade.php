@@ -18,7 +18,7 @@
             @endif
         </ul>
 
-        <ul class="grid-cols-3">
+        <ul class="grid-cols-3 w-full">
             @if(count($posts) > 0)
                 @foreach($posts as $post)
                     <li class="">
