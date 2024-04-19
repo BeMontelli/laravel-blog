@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class PageAdminController extends Controller
 {
@@ -19,8 +20,9 @@ class PageAdminController extends Controller
 
     public function myposts(): View
     {
-//        $posts = Post::all();
-        $posts = Post::latest()->take(6)->get();
+        // $posts = Post::all();
+        // $posts = Post::latest()->take(6)->get();
+        $posts = Post::where('user_id', Auth::user()->id)->get();
 
         return view('myposts', [
             'title' => 'My posts',
