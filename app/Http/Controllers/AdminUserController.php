@@ -10,7 +10,7 @@ class AdminUserController extends Controller
 {
     public function index()
     {
-        $users = User::all()->sortByDesc("id");
+        $users = User::paginate(12);
 
         return view('admin.users', [
             'title' => 'All users',

@@ -22,7 +22,7 @@ class PageAdminController extends Controller
     {
         // $posts = Post::all();
         // $posts = Post::latest()->take(6)->get();
-        $posts = Post::where('user_id', Auth::user()->id)->get();
+        $posts = Post::where('user_id', Auth::user()->id)->paginate(12);
 
         return view('myposts', [
             'title' => 'My posts',

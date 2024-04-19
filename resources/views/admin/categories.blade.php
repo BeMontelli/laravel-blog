@@ -34,6 +34,8 @@
                             <li>No Categories</li>
                         @endif
                     </ul>
+
+                    {{ $categories->links() }}
                 </div>
             </div>
         </div>

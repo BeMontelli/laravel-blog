@@ -29,6 +29,8 @@
                             <li>No Users</li>
                         @endif
                     </ul>
+
+                    {{ $users->links() }}
                 </div>
             </div>
         </div>

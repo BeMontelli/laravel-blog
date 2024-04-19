@@ -10,7 +10,7 @@ class AdminCategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all()->sortByDesc("id");
+        $categories = Category::paginate(12);
 
         return view('admin.categories', [
             'title' => 'All categories',

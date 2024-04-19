@@ -46,6 +46,8 @@
                 <li>No Posts</li>
             @endif
         </ul>
+
+        {{ $posts->links() }}
     </div>
 </div>
 

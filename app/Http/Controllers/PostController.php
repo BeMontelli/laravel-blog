@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Post::all();
+        $posts = Post::paginate(12);
         $categories = Category::all();
 
         return view('blog', [
@@ -26,7 +26,8 @@ class PostController extends Controller
     public function category(Category $category) : View
     {
         $categories = Category::all();
-        $posts = $category->posts;
+        $posts = $category->posts()->paginate(12);
+
         return view('blogcategory', [
             'image' => $category->image,
             'title' => $category->title,
