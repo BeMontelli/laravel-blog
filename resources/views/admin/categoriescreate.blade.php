@@ -12,15 +12,22 @@
                     <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method("POST")
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="text-black form-control" id="title" name="title" required>
+
+                        <div class="">
+                            <label class="block font-medium text-sm text-gray-700 dark:text-gray-300" for="title">
+                                Title
+                            </label>
+                            <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full" id="title" name="title" type="text" value="" required="required" autofocus="autofocus" autocomplete="title">
                         </div>
-                        <div class="form-group">
-                            <label for="body">description</label>
-                            <textarea class="text-black form-control" id="description" name="description" rows="3" required></textarea>
+
+                        <div class="mt-6">
+                            <label class="block font-medium text-sm text-gray-700 dark:text-gray-300" for="description">
+                                Description
+                            </label>
+                            <textarea class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm mt-1 block w-full" id="description" name="description" required="required" autofocus="autofocus"></textarea>
                         </div>
-                        <div class="form-group">
+
+                        <div class="mt-6 form-group">
                             <label class="form-label" for="imageinput">Image:</label>
                             <input
                                 type="file"
@@ -28,8 +35,7 @@
                                 id="imageinput"
                                 class="form-control @error('image') is-invalid @enderror">
                         </div>
-                        <br>
-                        <button type="submit" class="btn btn-primary">Create Category</button>
+                        <button type="submit" class="mt-6 btn__classic btn btn-primary">Create Category</button>
                     </form>
                 </div>
             </div>
