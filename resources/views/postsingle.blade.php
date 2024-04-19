@@ -23,7 +23,7 @@
         <p class="desc mb-4">{{ $post->description }}</p>
         <p class="content block mb-4">{{ $post->content }}</p>
 
-        <a href="{{ route('page.blog') }}" class="underline">Tous les posts</a>
+        <a href="{{ route('page.blog') }}" class="btn__classic">Retour au Blog</a>
     </div>
 </div>
 

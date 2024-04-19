@@ -24,7 +24,7 @@
             @endif
         </ul>
 
-        <a href="{{ route('page.blog') }}" class="underline">Tous les posts</a>
+        <a href="{{ route('page.blog') }}" style="" class="btn__classic">Le Blog</a>
     </div>
 </div>
 
